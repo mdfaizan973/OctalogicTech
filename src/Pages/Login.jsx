@@ -13,7 +13,7 @@ export default function Login() {
               src="https://octalogic.in/images/logos/octalogic.svg"
               alt="logo"
             />
-            OctaLogic.in
+            Octa Logic.in
           </a>
           <div
             style={{
