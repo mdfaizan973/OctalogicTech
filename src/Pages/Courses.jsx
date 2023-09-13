@@ -6,6 +6,9 @@ import CoursesCard from "./CoursesCard";
 
 export default function Courses() {
   const [course, setCourse] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filteredCourse, setFilteredCourse] = useState([]);
+
   useEffect(() => {
     axios
       .get("http://localhost:3000/courses")
@@ -16,7 +19,31 @@ export default function Courses() {
         console.error("Error:", error);
       });
   }, []);
-  console.log(course);
+
+  useEffect(() => {
+    const debounceTimeout = setTimeout(() => {
+      const filtered = course.filter(
+        (c) =>
+          c.course_name &&
+          c.instrument &&
+          c.instructor_name &&
+          c.day_of_week &&
+          (search === "" ||
+            c.course_name.toLowerCase().includes(search.toLowerCase()) ||
+            c.instructor_name.toLowerCase().includes(search.toLowerCase()) ||
+            c.day_of_week.toLowerCase().includes(search.toLowerCase()) ||
+            c.instrument.toLowerCase().includes(search.toLowerCase()))
+      );
+
+      setFilteredCourse(filtered);
+
+      // Log filteredCourse to the console
+      console.log("Filtered Courses:", filtered);
+    }, 300); // Adjust debounce delay as needed
+
+    return () => clearTimeout(debounceTimeout);
+  }, [search, course]);
+
   return (
     <div style={{ display: "flex" }}>
       <div>
@@ -39,13 +66,15 @@ export default function Courses() {
               <input
                 type="search"
                 placeholder="Search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
                 className="w-[183px] h-[16px] border-0 font-nunitoSans text-[#83858B] text-[12px] font-[400] leading-[16.37px] focus:ring-0"
               />
             </div>
           </div>
 
           <div className="w-[1212px] h-[499px] rounded-[6px] p-[24px] bg-[#FFFFFF]">
-            <CoursesCard courseData={course} />
+            <CoursesCard courseData={filteredCourse} />
           </div>
         </div>
       </div>
