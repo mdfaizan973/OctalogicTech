@@ -12,7 +12,7 @@ export default function Dashboard() {
   // Make a GET request using axios
   useEffect(() => {
     axios
-      .get("http://localhost:3000/bestStudents")
+      .get("https://octalogicsf.onrender.com/bestStudents")
       .then((response) => {
         //   console.log(response.data);
         setBestStudent(response.data);
@@ -23,7 +23,7 @@ export default function Dashboard() {
   }, []);
   useEffect(() => {
     axios
-      .get("http://localhost:3000/latestEnrolment")
+      .get("https://octalogicsf.onrender.com/latestEnrolment")
       .then((response) => {
         //   console.log(response.data);
         setEnrData(response.data);

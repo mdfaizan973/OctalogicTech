@@ -10,7 +10,7 @@ export default function Courses() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/courses")
+      .get("https://octalogicsf.onrender.com/courses")
       .then((response) => {
         setCourse(response.data);
       })
@@ -79,9 +79,6 @@ export default function Courses() {
           </div>
         </div>
       </div>
-      <p className=" w-[100px] font-nunitoSans font-[500] text-[#212529] text-[12px] leading-[19.1px] bg-[#FEC0CA] py-[4px] px-[16px] rounded-[4px] gap-[10px]">
-        Add Course
-      </p>
     </div>
   );
 }

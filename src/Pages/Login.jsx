@@ -13,8 +13,6 @@ export default function Login() {
       .then((res) => {
         // console.log(res);
         if (res.data.token == "QpwL5tke4Pnpja7X4") {
-          // window.location.href =
-          //   "https://placements.masaischool.com/placements";
           navigate("/dashboard");
         } else {
           alert("Wrong Email or Pass");
@@ -113,12 +111,12 @@ export default function Login() {
                   Sign in
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                  Don’t have an account yet?{" "}
+                  Use this Email to login -
                   <a
                     href="#"
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
-                    Sign up
+                    - eve.holt@reqres.in
                   </a>
                 </p>
               </form>
