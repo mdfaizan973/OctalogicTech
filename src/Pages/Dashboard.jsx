@@ -1,21 +1,37 @@
-// import React from "react";
+import { useState, useEffect } from "react";
 import SideBar from "../components/SideBar";
 import axios from "axios";
 import { MdPeople } from "react-icons/md";
+import StudentCard from "./StudentCard";
+import Enr from "./Enr";
 
 export default function Dashboard() {
-  //   const [enrData, setEnrData] = useState([]);
-  //   const [bestStudentData, setBestStudentData] = useState([]);
+  const [enrData, setEnrData] = useState([]);
+  const [bestStudent, setBestStudent] = useState([]);
 
   // Make a GET request using axios
-  axios
-    .get("http://localhost:3000/bestStudents")
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/bestStudents")
+      .then((response) => {
+        //   console.log(response.data);
+        setBestStudent(response.data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/latestEnrolment")
+      .then((response) => {
+        //   console.log(response.data);
+        setEnrData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
 
   return (
     <div style={{ display: "flex" }}>
@@ -175,9 +191,8 @@ export default function Dashboard() {
               View All courses
             </p>
           </div>
-          {/* Table-Div */}
           <div className="w-[1212px] h-[274px] rounded-[6px] p-[24px] gap-[16px] bg-[#FFFFFF]">
-            {/* <LatestEnrolmentsTablecard enrData={enrData} /> */}
+            <Enr enrData={enrData} />
           </div>
         </div>
 
@@ -195,7 +210,7 @@ export default function Dashboard() {
           </div>
           {/* Table-Div */}
           <div className="w-[1212px] h-[274px] rounded-[6px] p-[24px] flex gap-[16px] bg-[#FFFFFF]">
-            {/* <BestStudentsTablecard bestStudentData={bestStudentData} /> */}
+            <StudentCard bestStudentData={bestStudent} />
           </div>
         </div>
       </div>
