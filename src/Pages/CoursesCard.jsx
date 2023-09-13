@@ -1,19 +1,7 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
-export default function CoursesCard() {
-  const [course, setCourse] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/courses")
-      .then((response) => {
-        setCourse(response.data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }, []);
+export default function CoursesCard(courseData) {
+  let course = courseData.courseData;
   return (
     <div>
       <table className="w-[1164px] h-[451px] flex flex-col">

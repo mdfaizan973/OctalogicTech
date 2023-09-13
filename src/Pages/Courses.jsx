@@ -1,10 +1,22 @@
-// import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-
+import axios from "axios";
 import SideBar from "../components/SideBar";
 import CoursesCard from "./CoursesCard";
 
 export default function Courses() {
+  const [course, setCourse] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/courses")
+      .then((response) => {
+        setCourse(response.data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
+  console.log(course);
   return (
     <div style={{ display: "flex" }}>
       <div>
@@ -33,7 +45,7 @@ export default function Courses() {
           </div>
 
           <div className="w-[1212px] h-[499px] rounded-[6px] p-[24px] bg-[#FFFFFF]">
-            <CoursesCard />
+            <CoursesCard courseData={course} />
           </div>
         </div>
       </div>
