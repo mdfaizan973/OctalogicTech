@@ -210,7 +210,7 @@ export default function Dashboard() {
           </div>
           {/* Table-Div */}
           <div className="w-[1212px] h-[274px] rounded-[6px] p-[24px] flex gap-[16px] bg-[#FFFFFF]">
-            <StudentCard bestStudentData={bestStudent} />
+            <StudentCard bestStudent={bestStudent} />
           </div>
         </div>
       </div>

@@ -2,6 +2,6 @@
 
 export default function Enr(enrData) {
   let data = enrData.enrData;
-  console.log(data);
+  //   console.log(data);
   return <div>Enr</div>;
 }
