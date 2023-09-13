@@ -35,16 +35,18 @@ const SideBar = () => {
           </div>
         </Link>
       </div>
-      <div className="w-[72px] h-[744px] flex flex-col gap-[16px] justify-end">
-        <div className="w-[72px] h-[50px] rounded-[6px] py-[5px] px-[0px] flex flex-col items-center">
-          <MdOutlineLogout size={"24px"} color="#8B8D92" />
-          <div className="w-[38px] h-[16px] ">
-            <p className="font-nunitoSans text-[#83858B] text-[12px] font-[400] leading-[16.37px]">
-              Logout
-            </p>
+      <Link to={"/"}>
+        <div className="w-[72px] h-[744px] flex flex-col gap-[16px] justify-end">
+          <div className="w-[72px] h-[50px] rounded-[6px] py-[5px] px-[0px] flex flex-col items-center">
+            <MdOutlineLogout size={"24px"} color="#8B8D92" />
+            <div className="w-[38px] h-[16px] ">
+              <p className="font-nunitoSans text-[#83858B] text-[12px] font-[400] leading-[16.37px]">
+                Logout
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
