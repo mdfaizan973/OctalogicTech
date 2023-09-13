@@ -1,14 +1,21 @@
 // import React from "react";
 import SideBar from "../components/SideBar";
-// import {
-//   BestStudentsTablecard,
-//   LatestEnrolmentsTablecard,
-// } from "../components/OverviewTablecard";
+import axios from "axios";
 import { MdPeople } from "react-icons/md";
 
 export default function Dashboard() {
   //   const [enrData, setEnrData] = useState([]);
   //   const [bestStudentData, setBestStudentData] = useState([]);
+
+  // Make a GET request using axios
+  axios
+    .get("http://localhost:3000/bestStudents")
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 
   return (
     <div style={{ display: "flex" }}>
