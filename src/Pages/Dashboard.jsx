@@ -196,15 +196,12 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Second best Students table */}
         <div className="w-[1212px] h-[312px] flex flex-col gap-[16px]">
-          {/* Titles-Div */}
           <div className="w-[1212px] h-[22px] flex justify-between">
             <p className="text-[#83858B] tracking-[0.4px] leading-[21.82px] font-nunitoSans font-[700] text-[16px]">
               BEST STUDENTS
             </p>
             <p className="font-nunitoSans text-[#901E75] text-[14px] font-[400] leading-[19.01px]">
-              {" "}
               View All courses
             </p>
           </div>

@@ -5,7 +5,7 @@ export default function StudentCard(bestStudent) {
   console.log(data);
   return (
     <div>
-      <table className="w-[1164px] h-[226px]">
+      <table className="w-[1164px] h-[350px]">
         <thead>
           <tr className="flex justify-between h-[43px] items-center border-b border-[#E5E7EB] pt-[8px] pb-[16px]">
             {" "}
