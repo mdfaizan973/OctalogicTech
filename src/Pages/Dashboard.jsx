@@ -10,6 +10,7 @@ export default function Dashboard() {
   const [bestStudent, setBestStudent] = useState([]);
 
   // Make a GET request using axios
+
   useEffect(() => {
     axios
       .get("https://octalogicsf.onrender.com/bestStudents")
@@ -23,7 +24,7 @@ export default function Dashboard() {
   }, []);
   useEffect(() => {
     axios
-      .get("https://octalogicsf.onrender.com/latestEnrolment")
+      .get(" https://octalogicsf.onrender.com/latestEnrolment")
       .then((response) => {
         //   console.log(response.data);
         setEnrData(response.data);
