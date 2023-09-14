@@ -7,11 +7,14 @@ export default function Courses() {
   const [course, setCourse] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredCourse, setFilteredCourse] = useState([]);
+  const [load, setLoad] = useState(false);
 
   useEffect(() => {
+    setLoad(true);
     axios
       .get("https://octalogicsf.onrender.com/courses")
       .then((response) => {
+        setLoad(false);
         setCourse(response.data);
       })
       .catch((error) => {
@@ -74,7 +77,11 @@ export default function Courses() {
             </div>
 
             <div className="w-[1212px] h-[499px] rounded-[6px] p-[24px] bg-[#FFFFFF]">
-              <CoursesCard courseData={filteredCourse} />
+              {load ? (
+                <h2 className="text-2xl font-semibold mb-4">Loading.....</h2>
+              ) : (
+                <CoursesCard courseData={filteredCourse} />
+              )}
             </div>
           </div>
         </div>

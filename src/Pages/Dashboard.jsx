@@ -8,14 +8,17 @@ import Enr from "./Enr";
 export default function Dashboard() {
   const [enrData, setEnrData] = useState([]);
   const [bestStudent, setBestStudent] = useState([]);
-
+  const [load, setLoad] = useState(false);
   // Make a GET request using axios
 
   useEffect(() => {
+    setLoad(true);
     axios
       .get("https://octalogicsf.onrender.com/bestStudents")
       .then((response) => {
         //   console.log(response.data);
+        setLoad(false);
+
         setBestStudent(response.data);
       })
       .catch((error) => {
@@ -23,9 +26,12 @@ export default function Dashboard() {
       });
   }, []);
   useEffect(() => {
+    setLoad(true);
+
     axios
       .get(" https://octalogicsf.onrender.com/latestEnrolment")
       .then((response) => {
+        setLoad(false);
         //   console.log(response.data);
         setEnrData(response.data);
       })
@@ -193,7 +199,11 @@ export default function Dashboard() {
             </p>
           </div>
           <div className="w-[1212px] h-[274px] rounded-[6px] p-[24px] gap-[16px] bg-[#FFFFFF]">
-            <Enr enrData={enrData} />
+            {load ? (
+              <h2 className="text-2xl font-semibold mb-4">Loading.....</h2>
+            ) : (
+              <Enr enrData={enrData} />
+            )}
           </div>
         </div>
 
@@ -208,7 +218,11 @@ export default function Dashboard() {
           </div>
           {/* Table-Div */}
           <div className="w-[1212px] h-[274px] rounded-[6px] p-[24px] flex gap-[16px] bg-[#FFFFFF]">
-            <StudentCard bestStudent={bestStudent} />
+            {load ? (
+              <h2 className="text-2xl font-semibold mb-4">Loading.....</h2>
+            ) : (
+              <StudentCard bestStudent={bestStudent} />
+            )}
           </div>
         </div>
       </div>
